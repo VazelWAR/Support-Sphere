@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+ 
+.form-container {
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+ 
+.form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+ 
+label {
+    display: block;
+    margin-top: 15px;
+    color: #555;
+    font-weight: bold;
+}
+ 
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+ 
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+ 
+/* Style for validation errors */
+.error {
+    color: #d9534f;
+    font-size: 0.85em;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+ 
+.submit-div {
+    display: flex;   
+    justify-content: center;
+}
+ 
+.submit-button {
+    margin-top: 20px;
+    background-color: #003161; 
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+ 
+.submit-button:hover {
+    background-color: #012142;
+}
+ 
+/* ----------------------------------- */
+/* MODAL STYLES (MATCHING THE IMAGE)   */
+/* ----------------------------------- */
+ 
+.modal {
+    /* Full screen overlay */
+    position: fixed;
+    z-index: 1000; /* Ensure it's above everything else */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Semi-transparent black background */
+    display: flex; /* Use flexbox to center the content */
+    align-items: center;
+    justify-content: center;
+}
+ 
+.modal-content {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 350px; /* Smaller width as seen in the image */
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+ 
+.modal-content h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+ 
+.modal-ok-button {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    border: none;
+    padding: 10px 40px; /* Wide button */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    /* Make the button fill the modal width if needed, but the image shows a central one */
+}
+ 
+.modal-ok-button:hover {
+    background-color: #0056b3;
+}

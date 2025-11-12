@@ -1,0 +1,106 @@
+<div class="container">
+  <!-- Left Panel -->
+  <div class="left-panel">
+    <div class="text-block">
+      <h1>SupportSphere</h1>
+    </div>
+  </div>
+ 
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <form #signupForm="ngForm" (ngSubmit)="register()" class="signup-form">
+      <h2>Sign Up</h2>
+      <!-- Username -->
+      <div>
+        <label for="username">User name:</label>
+        <input type="text" id="username" name="username" placeholder="User name" [(ngModel)]="user.username"
+          #usernameInput="ngModel" required />
+        <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error-message">
+          <div *ngIf="usernameInput.errors?.required">User name is required</div>
+        </div>
+      </div>
+ 
+      <!-- Email -->
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Email" [(ngModel)]="user.email" #emailInput="ngModel"
+          required email />
+        <div *ngIf="emailInput.invalid && emailInput.touched" class="error-message">
+          <div *ngIf="emailInput.errors?.required">Email is required</div>
+          <div *ngIf="emailInput.errors?.email">Email must be valid</div>
+        </div>
+      </div>
+ 
+      <div>
+        <label for="mobile">Mobile:</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="Mobile" [(ngModel)]="user.mobile"
+          #mobileInput="ngModel" required pattern="^[6-9]\d{9}$" />
+        <div *ngIf="mobileInput.invalid && mobileInput.touched" class="error-message">
+          <div *ngIf="mobileInput.errors?.required">Mobile number is required</div>
+          <div *ngIf="mobileInput.errors?.pattern">Enter a valid 10-digit Indian mobile number</div>
+        </div>
+      </div>
+ 
+      <!-- Password -->
+      <div class="form-group">
+        <label for="mobile">Password:</label>
+        <input type="password" placeholder="Password" name="password" [(ngModel)]="user.password" required minlength="8"
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}" #password="ngModel" />
+        <div class="error-message" *ngIf="password.invalid && password.touched">
+          <span *ngIf="password.errors?.required">Password is required</span>
+          <span *ngIf="password.errors?.minlength">Password must at least contain 8 characters</span>
+          <span *ngIf="password.errors?.pattern">
+            Must include uppercase, lowercase, number & special char
+          </span>
+        </div>
+      </div>
+ 
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label for="mobile">Confirm Password:</label>
+        <input type="password" placeholder="Confirm password" name="confirmPassword" [(ngModel)]="user.confirmPassword"
+          required #confirmPassword="ngModel" />
+        <div class="error-message" *ngIf="confirmPassword.touched">
+          <span *ngIf="confirmPassword.errors?.required">Confirm password is required</span>
+          <span *ngIf="user.password !== user.confirmPassword">
+            Passwords do not match
+          </span>
+        </div>
+      </div>
+ 
+ 
+      <!-- Role Selection -->
+      <div>
+        <label for="role">Select Role:</label>
+        <select id="role" name="role" [(ngModel)]="user.role" #roleInput="ngModel" required>
+          <option value="" disabled selected>Select your role</option>
+          <option value="Client">Client</option>
+          <option value="Manager">Manager</option>
+        </select>
+        <div *ngIf="roleInput.invalid && roleInput.touched" class="error-message">
+          <div *ngIf="roleInput.errors?.required">Role selection is required</div>
+        </div>
+      </div>
+ 
+      <!-- Submit Button -->
+      <div class="submit-div">
+        <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+      </div>
+ 
+ 
+      <!-- Login Link -->
+      <div class="login-text">
+        <a routerLink="/login">Already have an account? Log in</a>
+      </div>
+    </form>
+  </div>
+ 
+  <!-- Modal Popup -->
+  <div *ngIf="showPopup" class="modal">
+    <div class="modal-content">
+      <h3>{{ isSuccess ? 'Success' : 'Error' }}</h3>
+      <p>{{ popupMessage }}</p>
+      <button class="modal-ok-button" (click)="closePopup()">OK</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+<ng-container *ngIf="userRole === 'Client'">
+    <app-clientnav></app-clientnav>
+  </ng-container>
+ 
+  <ng-container *ngIf="userRole === 'Manager'">
+    <app-managernav></app-managernav>
+  </ng-container>
+ 
+  <div class="container">
+    <main>
+      <section class="feedback">
+        <h2>Support Agent Details</h2>
+ 
+        <!-- Success Message -->
+        <div *ngIf="message" class="confirmation">
+          {{ message }}
+        </div>
+ 
+        <!-- Delete Confirmation Popup -->
+        <div *ngIf="showPopup">
+          <div class="popup-content">
+            <h2>Confirm Delete</h2>
+            <p>{{ popupMessage }}</p>
+            <button (click)="confirmDeletion(true)" class="delete-btn">Yes</button>
+            <button (click)="confirmDeletion(false)" class="btn-cancel">No</button>
+          </div>
+        </div>
+ 
+        <div class="filter-wrapper">
+          <div class="filter-section">
+            <p>Search by:</p>
+            <input [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search by Agent Name or Expertise">
+          </div>
+          <div class="filter-section">
+            <p>Filter by Status:</p>
+            <select [(ngModel)]="filterStatus" (change)="onFilter()">
+              <option value="">All Status</option>
+              <option value="Available">Available</option>
+              <option value="Unavailable">Unavailable</option>
+            </select>
+          </div>
+        </div>
+ 
+        <table>
+          <thead>
+            <tr>
+              <th>S.NO</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Expertise</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let agent of filteredAgents; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ agent.name }}</td>
+              <td>{{ agent.email }}</td>
+              <td>{{ agent.phone }}</td>
+              <td>{{ agent.expertise }}</td>
+              <td>{{ agent.status }}</td>
+              <td class="action-buttons">
+                <button class="n edit" (click)="onEdit(agent)">Edit</button>
+                <button class="n delete" (click)="askDeleteAgent(agent)">Delete</button>
+                <button class="n make-unavailable" *ngIf="agent.status === 'Available'" (click)="onToggleStatus(agent)">
+                  Make Unavailable
+                </button>
+                <button class="n make-available" *ngIf="agent.status !== 'Available'" (click)="onToggleStatus(agent)">
+                  Make Available
+                </button>
+                <button class="n view-profile" (click)="onViewProfile(agent)">View Profile</button>
+              </td>
+            </tr>
+            <tr *ngIf="filteredAgents.length === 0">
+              <td colspan="10">No Data Found</td>
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="filteredAgents.length === 0">Oops! No records found</p>
+      </section>
+    </main>
+ 
+    <!-- Profile Modal -->
+    <div *ngIf="selectedProfileAgent" class="profile-popup">
+      <div class="profile-content">
+        <button class="close-btn" (click)="closeProfile()">X</button>
+        <p><strong>Name:</strong> {{ selectedProfileAgent.name }}</p>
+        <p><strong>Email:</strong> {{ selectedProfileAgent.email }}</p>
+        <p><strong>Phone:</strong> {{ selectedProfileAgent.phone }}</p>
+        <p><strong>Expertise:</strong> {{ selectedProfileAgent.expertise }}</p>
+        <p><strong>Experience:</strong> {{ selectedProfileAgent.experience }}</p>
+        <p><strong>Shift Timing:</strong> {{ selectedProfileAgent.shiftTiming }}</p>
+        <p><strong>Remarks:</strong> {{ selectedProfileAgent.remarks }}</p>
+      </div>
+    </div>
+ 
+    <!-- Error Popup -->
+    <div *ngIf="isErrorPopupOpen" class="error-popup">
+      <div class="error-popup-content">
+        <h2>Error</h2>
+        <p>{{ errorMessage }}</p>
+        <button class="close-btn" (click)="closeErrorPopup()">X</button>
+      </div>
+    </div>
+  </div>

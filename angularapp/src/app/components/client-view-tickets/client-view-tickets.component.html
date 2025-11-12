@@ -1,0 +1,73 @@
+<ng-container *ngIf="userRole === 'Client'">
+  <app-clientnav></app-clientnav>
+  </ng-container>
+   
+  <ng-container *ngIf="userRole === 'Manager'">
+  <app-managernav></app-managernav>
+  </ng-container>
+   
+  <div class="container">
+  <h1>Your Tickets</h1>
+  <div class="search-filter">
+  <label for="searchQuery">Search By:</label>
+  <input type="text" id="searchQuery" name="searchQuery" placeholder="Search by Title or Issue" [(ngModel)]="searchQuery" (input)="filterTickets()" />
+  <select [(ngModel)]="selectedPriority" (change)="filterTickets()">
+  <option value="">--select priority--</option>
+  <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+  </select>
+  </div>
+   
+    <!-- Confirmation Message -->
+  <div *ngIf="confirmationMessage" class="confirmation">
+      {{ confirmationMessage }}
+  </div>
+   
+    <div *ngIf="showPopup">
+  <div class="popup-content">
+  <h2>Confirm Delete</h2>
+  <p>{{ popupMessage }}</p>
+  <button (click)="confirmDeletion(true)" class="delete-btn">Yes</button>
+  <button (click)="confirmDeletion(false)" class="btn-cancel">No</button>
+  </div>
+  </div>
+   
+    <table *ngIf="filteredTickets.length > 0; else noRecords">
+  <thead>
+  <tr>
+  <th>S.No.</th>
+  <th>Title</th>
+  <th>Priority</th>
+  <th>Issue Category</th>
+  <th>Created Date</th>
+  <th>Status</th>
+  <th>Resolution Date</th>
+  <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let ticket of filteredTickets; let i = index">
+  <td>{{ i + 1 }}</td>
+  <td>{{ ticket.title }}</td>
+  <td>{{ ticket.priority }}</td>
+  <td>{{ ticket.issueCategory }}</td>
+  <td>{{ ticket.createdDate | date: 'shortDate' }}</td>
+  <td>{{ ticket.status }}</td>
+  <td>{{ ticket.resolutionDate ? (ticket.resolutionDate | date: 'shortDate') : 'Pending' }}</td>
+  
+  <td>
+  <ng-container *ngIf="ticket.status === 'Open'">
+  <button class="btn-edit" (click)="editTicket(ticket)">Edit</button>
+  <button class="btn-delete" (click)="askDeleteTicket(ticket)">Delete</button>
+  </ng-container>
+  <button class="btn-view-agent" *ngIf="ticket.supportAgent" (click)="viewAgent(ticket)">View Agent</button>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+   
+    <ng-template #noRecords>
+  <p>Oops! No records found.</p>
+  </ng-template>
+   
+    
+  </div>

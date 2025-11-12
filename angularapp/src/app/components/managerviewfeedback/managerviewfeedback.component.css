@@ -1,0 +1,175 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+header {
+  background: #35424a;
+  color: #ffffff;
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: #e8491d 3px solid;
+}
+
+header h1 {
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
+nav ul {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 5px;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+main {
+  margin: 20px 0;
+}
+
+.feedback {
+  background: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feedback h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 5px solid #0a7edd;
+  /* Add blue thick line */
+  padding-bottom: 10px;
+  /* Add padding to separate text from line */
+}
+
+.filter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-section select {
+  border-radius: 8px;
+  /* Add rounded corners */
+  padding: 8px;
+  /* Add padding */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  /* Add border-radius to table */
+  overflow: hidden;
+  /* Ensure the border-radius is applied correctly */
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #dddddd;
+}
+
+
+
+table th {
+  background: #003161;
+  color: #fff;
+  text-align: center;
+  /* Center-align table headers */
+}
+
+table tbody tr td {
+  text-align: center;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.close {
+  float: right;
+  right: 0;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 4px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.close:hover {
+  background-color: rgb(148, 0, 0);
+}
+
+.btn-div {
+  display: flex;
+}
+
+.btn-td {
+  width: 29%;
+}
+
+button.n {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  margin-right: 5px;
+  background-color: #003161;
+  transition: 0.3s ease;
+}
+
+button.n:hover {
+  background-color: #011a33;
+}
+
+button.n:last-child {
+  margin-right: 0;
+}

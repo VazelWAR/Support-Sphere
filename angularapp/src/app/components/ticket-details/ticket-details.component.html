@@ -1,0 +1,108 @@
+<ng-container *ngIf="userRole === 'Client'">
+  <app-clientnav></app-clientnav>
+</ng-container>
+
+<ng-container *ngIf="userRole === 'Manager'">
+  <app-managernav></app-managernav>
+</ng-container>
+
+<div class="ticket-container" *ngIf="ticket">
+  <h2>Ticket Details</h2>
+  <button class="back-btn" (click)="navigateBack()">Back</button>
+  <div class="ticket-info">
+    <p><strong>Ticket Num:</strong> {{ ticket.ticketId }}</p>
+    <p><strong>Title:</strong> {{ ticket.title }}</p>
+    <p><strong>Description:</strong> {{ ticket.description }}</p>
+    <p><strong>Issue Category:</strong> {{ ticket.issueCategory }}</p>
+    <p><strong>Priority:</strong> {{ ticket.priority }}</p>
+    <p><strong>Status:</strong> {{ ticket.status }}</p>
+    <p><strong>Created Date:</strong> {{ ticket.createdDate | date }}</p>
+    <p><strong>Resolution Date:</strong> {{ ticket.resolutionDate ? (ticket.resolutionDate | date) : 'Not Resolved' }}
+    </p>
+  </div>
+
+  <!-- Actions for Open Tickets -->
+  <div class="ticket-actions" *ngIf="ticket.status === 'Open' && !ticket.resolutionDate">
+    <div class="action-buttons">
+      <button class="summary-btn" (click)="openSummaryModal()">Provide Summary</button>
+      <button class="resolve-btn" (click)="markAsResolved()" [disabled]="ticket.status !== 'Open'">Mark as
+        Resolved</button>
+    </div>
+  </div>
+
+  <!-- Actions for Resolved/Closed Tickets -->
+  <div class="summary-actions" *ngIf="ticket.status !== 'Open' || ticket.resolutionDate">
+    <button class="summary-btn" (click)="viewSummaryModal()">View Summary</button>
+    <button class="resolve-btn" (click)="markAsResolved()" [disabled]="ticket.status !== 'Open'">Mark as
+      Resolved</button>
+  </div>
+
+
+
+
+  <div class="agent-info" *ngIf="agent">
+    <h3>Assigned Agent</h3>
+    <p><strong>Name:</strong> {{ agent.name }}</p>
+    <p><strong>Email:</strong> {{ agent.email }}</p>
+    <p><strong>Phone:</strong> {{ agent.phone }}</p>
+    <p><strong>Expertise:</strong> {{ agent.expertise }}</p>
+    <p><strong>Status:</strong> {{ agent.status }}</p>
+  </div>
+</div>
+
+<!-- Summary Modal -->
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <button class="close-btn" (click)="cancelSubmit()"> X </button>
+    <h3>Provide Resolution Summary</h3>
+    <textarea [(ngModel)]="summaryText" placeholder="Enter resolution summary"></textarea>
+
+    <div class="satisfaction-options">
+      <label>
+        <input type="radio" name="satisfaction" [value]="true" [(ngModel)]="satisfactionStatus" />
+        <span class="smiley">😊</span> Satisfied
+      </label>
+      <label>
+        <input type="radio" name="satisfaction" [value]="false" [(ngModel)]="satisfactionStatus" />
+        <span class="smiley">😞</span> Not Satisfied
+      </label>
+    </div>
+
+    <button (click)="openConfirmationModal()">Submit</button>
+
+    <div class="warning-message" [ngClass]="{ 'show': showWarning, 'hide': !showWarning }">
+      Please provide a resolution summary and select satisfaction status.    
+    </div>
+  </div>
+</div>
+
+
+<div>
+
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal" *ngIf="showConfirmationModal">
+  <div class="modal-content">
+    <h3>Are you sure you want to submit this summary?</h3>
+    <button class="confirm-btn" (click)="confirmSubmit()">Yes! Confirm</button>
+    <button class="cancel-btn" (click)="cancelSubmit()">Cancel</button>
+  </div>
+</div>
+
+
+
+<!-- Summary Modal -->
+<div class="modal" *ngIf="isViewing">
+  <div class="modal-content">
+    <h3>Resolution Summary</h3>
+    <button class="close-btn" (click)="isViewing = false">X</button>
+    <p><strong>Summary:</strong> {{ ticket.resolutionSummary }}</p>
+    <p><strong>Satisfaction:</strong> <span class="smiley">{{ ticket?.satisfied ? '😊 Satified' : '😞 Not Satisfied'
+        }}</span></p>
+  </div>
+</div>
+
+<div class="warning-message" [ngClass]="{ 'show': showWarning, 'hide': !showWarning }">
+  Please provide a resolution summary and select satisfaction status.
+</div>

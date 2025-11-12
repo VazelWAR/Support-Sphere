@@ -1,0 +1,365 @@
+client-view-ticket.css
+
+-----------------------------------
+
+/* Container */
+
+.container {
+
+  margin: 0 auto;
+
+  padding: 20px;
+
+  background-color: #f4f6f8;
+
+}
+
+/* Heading */
+
+.container h1 {
+
+  text-align: center;
+
+  font-size: 2rem;
+
+  margin-bottom: 20px;
+
+  color: #2c3e50;
+
+  margin-top: 0;
+
+  font-weight: bold;
+
+}
+
+/* Search and Filter Section */
+
+.search-filter {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+
+  align-items: center;
+
+}
+
+.search-filter label {
+
+  font-weight: 600;
+
+  color: #34495e;
+
+}
+
+.search-filter input,
+
+.search-filter select {
+
+  padding: 8px 12px;
+
+  border: 1px solid #fff;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+
+  background-color: #fff;
+
+}
+
+/* Table Styling */
+
+table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  background-color: #fff;
+
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+  margin-bottom: 20px;
+
+}
+
+thead {
+
+  background-color: #ecf0f1;
+
+}
+
+th, td {
+
+  padding: 12px 15px;
+
+  text-align: left;
+
+  border-bottom: 1px solid #ddd;
+
+  font-size: 14px;
+
+}
+
+th {
+
+  font-weight: normal;
+
+  color: #2c3e50;
+
+  font-size: 15px;
+
+}
+
+tbody tr:hover {
+
+  background-color: #f2f2f2;
+
+}
+
+/* Buttons */
+
+button {
+
+  padding: 4px 12px;
+
+  margin-right: 5px;
+
+  border: none;
+
+  border-radius: 4px;
+
+  font-size: 0.85rem;
+
+  cursor: pointer;
+
+  color: white;
+
+  transition: background-color 0.3s ease;
+
+}
+ 
+/* button:nth-child(1) {
+
+  background-color: #11b756;
+
+  font-family: 'Poppins';
+
+  font-size: 12px;
+
+}
+ 
+button:nth-child(1):hover {
+
+  background-color: #095b2b;
+
+}
+ 
+button:nth-child(2) {
+
+  background-color: rgb(215, 12, 12);
+
+  font-family: 'Poppins';
+
+  font-size: 12px;
+ 
+}
+ 
+button:nth-child(2):hover {
+
+  background-color: rgb(103, 7, 7);
+
+}
+ 
+button:nth-child(3) {
+
+  background-color: #003161;
+
+  font-family: 'Poppins';
+
+  font-size: 12px;
+ 
+}
+ 
+button:nth-child(3):hover {
+
+  background-color: #01203f;
+
+} */
+ 
+/* Common button styles */
+
+.btn-edit,
+
+.btn-delete,
+
+.btn-view-agent {
+
+  font-family: 'Poppins';
+
+  font-size: 12px;
+
+  padding: 4px 12px;
+
+  border: none;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  color: white;
+
+}
+ 
+/* Edit Button */
+
+.btn-edit {
+
+  background-color: #11b756;
+
+}
+ 
+.btn-edit:hover {
+
+  background-color: #095b2b;
+
+}
+ 
+/* Delete Button */
+
+.btn-delete {
+
+  background-color: rgb(215, 12, 12);
+
+}
+ 
+.btn-delete:hover {
+
+  background-color: rgb(103, 7, 7);
+
+}
+ 
+/* View Agent Button */
+
+.btn-view-agent {
+
+  background-color: #003161;
+
+}
+ 
+.btn-view-agent:hover {
+
+  background-color: #01203f;
+
+}
+ 
+ 
+/* Confirmation Message */
+
+.confirmation {
+
+  margin-top: 20px;
+
+  padding: 10px;
+
+  background-color: #dff0d8;
+
+  color: #3c763d;
+
+  border: 1px solid #d6e9c6;
+
+  border-radius: 4px;
+
+}
+
+/* No Records Message */
+
+p {
+
+  font-size: 1rem;
+
+  color: #777;
+
+  margin-top: 20px;
+
+}
+ 
+.popup-content {
+
+  position: fixed;
+
+  top: 80px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background-color: white;
+
+  color: black;
+
+  padding: 20px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 8px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  z-index: 1000;
+
+  text-align: center;
+
+  min-width: 300px;
+
+} */
+
+.popup-content button {
+
+  margin: 10px 5px;
+
+  padding: 8px 16px;
+
+  border: none;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+}
+ 
+/* Specific styles */
+
+.delete-btn {
+
+  background-color: rgb(215, 12, 12) !important;
+
+  color: white;
+
+}
+ 
+.delete-btn:hover {
+
+  background-color: rgb(103, 7, 7);
+
+}
+ 
+.btn-cancel {
+
+  background-color: #003161;
+
+  color: #fff;
+
+}
+ 
+.btn-cancel:hover {
+
+  background-color: #01203f;
+
+}
+ 

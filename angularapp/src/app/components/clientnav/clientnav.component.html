@@ -1,0 +1,40 @@
+<div class="navbar">
+      <div class="brand">SupportSphere</div>
+      <div class="nav-right">
+            <div class="manager-btn">{{userName}} / Client</div>
+            <nav class="nav-links">
+                  <div class="nav-item">
+                        <a routerLink="/home">Home</a>
+                  </div>
+
+                  <div class="dropdown nav-item">
+                        <a class="nav-btn">Tickets</a>
+                        <div class="dropdown-content">
+                              <a routerLink="/add-ticket">Add Ticket</a>
+                              <a routerLink="/view-tickets-client">View Tickets</a>
+                        </div>
+                  </div>
+
+                  <div class="nav-item">
+                        <a routerLink="/view-agents-client">View Agents</a>
+                  </div>
+
+                  <div class="dropdown nav-item">
+                        <a class="nav-btn">Feedbacks</a>
+                        <div class="dropdown-content">
+                              <a routerLink="/view-feedbacks-client">My Feedbacks</a>
+                        </div>
+                  </div>
+            </nav>
+            <button class="logout-btn" (click)="showLogoutPopup = true">Logout</button>
+      </div>
+
+      <!-- Logout confirmation -->
+      <div *ngIf="showLogoutPopup" class="logout-popup">
+            <div class="popup-card">
+                  <p>Are you sure you want to logout?</p>
+                  <button class="popup-btn confirm" (click)="logout()">Yes</button>
+                  <button class="popup-btn cancel" (click)="showLogoutPopup = false">Cancel</button>
+            </div>
+      </div>
+</div>

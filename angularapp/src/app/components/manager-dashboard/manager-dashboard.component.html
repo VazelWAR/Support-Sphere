@@ -1,0 +1,63 @@
+
+<ng-container *ngIf="userRole === 'Client'">
+  <app-clientnav></app-clientnav>
+</ng-container>
+
+<ng-container *ngIf="userRole === 'Manager'">
+  <app-managernav></app-managernav>
+</ng-container>
+
+<div class="dashboard-container">
+    <div class="header">
+      <h2>Dashboard</h2>
+    </div>
+   
+    <div class="client-summary">
+      <div class="client-box happy">
+        <h3>Happy Clients</h3>
+        <p>{{ happyClientsCount }}</p>
+      </div>
+      <div class="client-box unhappy">
+        <h3>Unhappy Clients</h3>
+        <p>{{ unhappyClientsCount }}</p>
+      </div>
+    </div>
+   
+    <h3>Tickets Summary</h3>
+    <table class="tickets-summary">
+      <thead>
+        <tr>
+          <th>Ticket ID</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Satisfaction</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="tickets.length > 0; else noTickets">
+        <tr *ngFor="let ticket of tickets">
+          <td>{{ ticket.ticketId }}</td>
+          <td>{{ ticket.title }}</td>
+          <td [ngClass]="{
+                'status-open': ticket.status === 'Open',
+                'status-resolved': ticket.status === 'Resolved',
+                'status-closed': ticket.status === 'Closed'
+              }">{{ ticket.status }}</td>
+          <td [ngClass]="{
+                'satisfaction-happy': ticket.satisfied === true,
+                'satisfaction-unhappy': ticket.satisfied === false,
+                'satisfaction-pending': ticket.satisfied === null || ticket.satisfied === undefined
+              }">
+            {{ ticket.satisfied === true ? 'Happy' : ticket.satisfied === false ? 'Unhappy' : 'Pending Resolution' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+   
+    <ng-template #noTickets>
+      <tr>
+        <td colspan="4">No tickets available.</td>
+      </tr>
+    </ng-template>
+  </div>
+ 
+ 

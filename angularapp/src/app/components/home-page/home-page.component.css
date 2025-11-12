@@ -1,0 +1,147 @@
+/* --- Global Variables (if in a shared style file, otherwise define them here) --- */
+:root {
+  --primary-red: #d9413c;
+  --primary-purple: #3B0A45 ;
+  --dark-text: #333;
+  --light-text: #fff;
+  --background-gray: #f8f8f8;
+}
+ 
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--dark-text);
+  background-color: var(--background-gray);
+}
+ 
+/* --- Hero Section (THE FIX IS HERE) --- */
+.hero-section {
+  position: relative;
+  height: 550px; /* Matching the height from the visual example */
+  overflow: hidden;
+}
+ 
+.overlay {
+  /* *** CRITICAL FIX: Use the correct path for Angular build/serving *** */
+  background-image: url('/assets/images/homepage.webp'); /* Assuming component CSS is one level below 'src' */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  /* Add a subtle dark overlay to make the text pop */
+  background-blend-mode: multiply;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+ 
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80%;
+}
+ 
+.branding-box {
+  /* Semi-transparent dark box matching the image's look */
+  background-color: rgba(48, 48, 48, 0.45); 
+  padding: 20px 40px;
+  color: var(--light-text);
+  border-radius: 5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+}
+ 
+.branding-box h1 {
+  font-size: 2.5em;
+  color: white;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+ 
+.branding-box p {
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: white;
+  opacity: 0.9;
+}
+/* --- Welcome Section (Overlapping Card) --- */
+.welcome-section {
+  display: flex;
+  justify-content: center;
+  margin-top: -100px; /* pull card higher for overlap */
+  position: relative;
+}
+ 
+.welcome-card {
+  padding: 50px 60px; /* more generous padding */
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* stronger floating shadow */
+  text-align: center;
+  max-width: 850px;
+  width: 100%;
+  z-index: 100;
+  background: rgb(255, 255, 255);
+  opacity:0.8;
+  color:black;
+}
+ 
+.welcome-card h2 {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  z-index: 1000 !important;
+  color: var(--dark-text);
+}
+ 
+.welcome-card .intro-text {
+  font-size: 1.15em;
+  line-height: 1.7;
+  color: #555;
+  z-index: 1000 !important ;
+  margin: 0 auto;
+  max-width: 720px;
+}
+ 
+/* --- Contact Section (Dark Box) --- */
+.contact-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px; /* spacing after welcome card */
+  margin-bottom: 80px; /* add breathing room at bottom */
+ 
+}
+ 
+.contact-box {
+  background: linear-gradient(135deg, #3b0a45, #6a1b9a);
+  color: white !important;
+  padding: 10px 0px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+ 
+.contact-box h3 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+ 
+.contact-box p {
+  font-size: 1.05em;
+  margin: 8px 0;
+}
+ 
+.contact-box p strong {
+  font-weight: 700;
+  margin-right: 6px;
+}

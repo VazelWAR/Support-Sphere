@@ -1,0 +1,100 @@
+body {
+    font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+   
+  .dashboard-container {
+    padding: 30px;
+  }
+   
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+   
+  .header h2 {
+    font-size: 28px;
+    color: #333;
+  }
+   
+  .client-summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+  }
+   
+  .client-box {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+  }
+   
+  .client-box h3 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+   
+  .client-box p {
+    font-size: 40px;
+    color: #007bff;
+    margin: 0;
+  }
+   
+  .tickets-summary {
+    width: 100%;
+    border-collapse: collapse;
+  }
+   
+  .tickets-summary th, .tickets-summary td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+   
+  .tickets-summary th {
+    background-color: #003161;
+    color: white;
+    font-weight: bold;
+  }
+   
+  .tickets-summary tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+   
+  /* Status Colors */
+  .status-open {
+    color: #003161;
+    font-weight: bold;
+  }
+   
+  .status-resolved {
+    color: #28a745;
+    font-weight: bold;
+  }
+   
+  .status-closed {
+    color: #dc3545;
+    font-weight: bold;
+  }
+   
+  /* Satisfaction Icons */
+  .satisfaction-happy::after {
+    content: " 😊";
+  }
+   
+  .satisfaction-unhappy::after {
+    content: " 😞";
+  }
+   
+  .satisfaction-pending::after {
+    content: " ⏳";
+  }
+   
+ 
+ 

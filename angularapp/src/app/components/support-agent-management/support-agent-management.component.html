@@ -1,0 +1,81 @@
+<ng-container *ngIf="userRole === 'Client'">
+  <app-clientnav></app-clientnav>
+</ng-container>
+
+<ng-container *ngIf="userRole === 'Manager'">
+  <app-managernav></app-managernav>
+</ng-container>
+
+<div class="form-container">
+  <h2>{{!isEditing ? "Add New Support Agent" : "Edit Support Agent"}}</h2>
+
+  <form [formGroup]="agentForm" (ngSubmit)="onSubmit()">
+
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name" />
+    <div class="error" *ngIf="agentForm.get('name')?.touched && agentForm.get('name')?.errors">
+      <span *ngIf="agentForm.get('name')?.errors?.required">Name is required.</span>
+      <span *ngIf="agentForm.get('name')?.errors?.minlength">Name must be at least 3 characters.</span>
+    </div>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email" />
+    <div class="error" *ngIf="agentForm.get('email')?.touched && agentForm.get('email')?.errors">
+      <span *ngIf="agentForm.get('email')?.errors?.required">Email is required.</span>
+      <span *ngIf="agentForm.get('email')?.errors?.email">Invalid email format.</span>
+    </div>
+
+    <label for="phone">Phone</label>
+    <input type="text" id="phone" formControlName="phone" />
+    <div class="error" *ngIf="agentForm.get('phone')?.touched && agentForm.get('phone')?.errors">
+      <span *ngIf="agentForm.get('phone')?.errors?.required">Phone is required.</span>
+      <span *ngIf="agentForm.get('phone')?.errors?.pattern">Phone must be 10 digits.</span>
+    </div>
+
+    <label for="expertise">Expertise</label>
+    <input type="text" id="expertise" formControlName="expertise" />
+    <div class="error" *ngIf="agentForm.get('expertise')?.touched && agentForm.get('expertise')?.errors">
+      <span *ngIf="agentForm.get('expertise')?.errors?.required">Expertise is required.</span>
+    </div>
+
+    <label for="experience">Experience (years)</label>
+    <input type="number" id="experience" formControlName="experience" />
+    <div class="error" *ngIf="agentForm.get('experience')?.touched && agentForm.get('experience')?.errors">
+      <span *ngIf="agentForm.get('experience')?.errors?.required">Experience is required.</span>
+      <span *ngIf="agentForm.get('experience')?.errors?.min">Experience must be a positive number.</span>
+    </div>
+
+    <label for="status">Status</label>
+    <select id="status" formControlName="status">
+      <option value="Available">Available</option>
+      <option value="Unavailable">Unavailable</option>
+    </select>
+
+    <label for="shiftTiming">Shift Timing</label>
+    <input type="text" id="shiftTiming" formControlName="shiftTiming" />
+    <div class="error" *ngIf="agentForm.get('shiftTiming')?.touched && agentForm.get('shiftTiming')?.errors">
+      <span *ngIf="agentForm.get('shiftTiming')?.errors?.required">Shift Timing is required.</span>
+    </div>
+
+    <label for="remarks">Remarks</label>
+    <textarea id="remarks" formControlName="remarks"></textarea>
+    <div class="error" *ngIf="agentForm.get('remarks')?.touched && agentForm.get('remarks')?.errors">
+      <span *ngIf="agentForm.get('remarks')?.errors?.required">Remarks are required.</span>
+    </div>
+
+    <div class="submit-div">
+      <button type="submit" class="submit-button">
+        {{!isEditing ? "Add Agent" : "Update Agent"}}
+      </button>
+    </div>
+
+  </form>
+</div>
+
+<!-- Modal -->
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <h3>{{ modalText }}</h3>
+    <button class="modal-ok-button" (click)="closeModal()">OK</button>
+  </div>
+</div>

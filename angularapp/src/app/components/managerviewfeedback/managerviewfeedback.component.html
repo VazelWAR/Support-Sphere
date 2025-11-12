@@ -1,0 +1,92 @@
+<ng-container *ngIf="userRole === 'Client'">
+  <app-clientnav></app-clientnav>
+</ng-container>
+
+<ng-container *ngIf="userRole === 'Manager'">
+  <app-managernav></app-managernav>
+</ng-container>
+<div class="container">
+    <main>
+      <section class="feedback">
+        <h2>Feedback Received</h2>
+        <div class="filter-wrapper">
+          <p>Filter by category : </p>
+          <div class="filter-section">
+            <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+              <option value="">Select Category</option>
+              <option value="Authentication">Authentication</option>
+              <option value="UI Bug">UI Bug</option>
+              <option value="Performance">Performance</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>S.NO</th>
+              <th>USER NAME</th>
+              <th>FEEDBACK</th>
+              <th>RATING</th>
+              <th>POSTED DATE</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let feedback of filteredFeedbacks; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ feedback.user.username }}</td>
+              <td>{{ feedback.feedbackText }}</td>
+              <td>{{ feedback.rating }}</td>
+              <td>{{ feedback.date | date: 'yyyy-MM-dd' }}</td>
+              <td class="btn-td">
+                <div class="btn-div">
+                  <button class="n" (click)="showUserProfile(feedback.user)">User Profile</button>
+                  <button class="n" (click)="showAgentProfile(feedback.supportAgent)">Agent Profile</button>
+                  <button class="n" (click)="showTicket(feedback.ticket)">Ticket</button>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="filteredFeedbacks.length === 0">
+              <td colspan="6">No Data Found</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  
+  <!-- User Profile Modal -->
+  <div class="modal" [class.show]="isUserModalOpen">
+    <div class="modal-content">
+      <button class="close" (click)="closeModal('user')" (keydown)="handleKeyDown($event)" aria-label="Close">&times;</button>
+      <h2>User Profile</h2>
+      <p>Name: {{ selectedUser?.username }}</p>
+      <p>Email: {{ selectedUser?.email }}</p>
+      <p>Mobile Number: {{ selectedUser?.mobileNumber }}</p>
+    </div>
+  </div>
+  
+  <!-- Agent Profile Modal -->
+  <div class="modal" [class.show]="isAgentModalOpen">
+    <div class="modal-content">
+      <button class="close" (click)="closeModal('agent')" (keydown)="handleKeyDown($event)" aria-label="Close">&times;</button>
+      <h2>Agent Profile</h2>
+      <p>Name: {{ selectedAgent?.name }}</p>
+      <p>Expertise: {{ selectedAgent?.expertise }}</p>
+      <p>Email: {{ selectedAgent?.email }}</p>
+      <p>Phone: {{ selectedAgent?.phone }}</p>
+    </div>
+  </div>
+  
+  <!-- Ticket Details Modal -->
+  <div class="modal" [class.show]="isTicketModalOpen">
+    <div class="modal-content">
+      <button class="close" (click)="closeModal('ticket')" (keydown)="handleKeyDown($event)" aria-label="Close">&times;</button>
+      <h2>Ticket Details</h2>
+      <p>Title: {{ selectedTicket?.title }}</p>
+      <p>Description: {{ selectedTicket?.description }}</p>
+      <p>Priority: {{ selectedTicket?.priority }}</p>
+      <p>Issue Category: {{ selectedTicket?.status }}</p>
+    </div>
+  </div>

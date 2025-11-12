@@ -1,0 +1,320 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 95%;
+  margin: auto;
+  overflow: hidden;
+}
+header {
+  background: #35424a;
+  color: #ffffff;
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: #e8491d 3px solid;
+}
+header h1 {
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 24px;
+}
+nav ul {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+nav ul li {
+  display: inline;
+  margin: 0 5px;
+}
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+}
+main {
+  margin: 20px 0;
+}
+.feedback {
+  background: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.feedback h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 5px solid #0a7edd;
+  padding-bottom: 10px;
+}
+.filter-wrapper {
+  display: flex;
+  justify-content: space-between; /* Space out items between left and right */
+  align-items: center;
+  margin-bottom: 20px;
+}
+.filter-section {
+  display: flex;
+  align-items: center; /* Align items within section */
+}
+.filter-section p {
+  margin: 0 10px 0 0; /* Add space between label and input/dropdown */
+}
+.filter-section select, .filter-section input {
+  border-radius: 8px;
+  padding: 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #dddddd;
+  font-size: 14px;
+}
+table th {
+  background: #003161;
+  color: #fff;
+  text-align: center;
+}
+table tbody tr td {
+  text-align: center;
+  white-space: nowrap; /* Prevent buttons from wrapping */
+}
+table tbody tr td button.n {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s ease;
+  margin-right: 5px;
+}
+ 
+table tbody tr td button.n.edit {
+  background-color: #11b756;
+}
+ 
+table tbody tr td button.n.edit:hover {
+  background-color: #095b2b;
+}
+ 
+table tbody tr td button.n.delete {
+  background-color: rgb(215, 12, 12);
+}
+ 
+table tbody tr td button.n.delete:hover {
+  background-color: rgb(103, 7, 7);
+}
+ 
+table tbody tr td button.n.make-unavailable {
+  background-color: rgb(229, 148, 18);
+  color: rgb(249, 247, 247);
+}
+ 
+table tbody tr td button.n.make-unavailable:hover {
+  background-color: rgb(133, 84, 6);
+}
+ 
+table tbody tr td button.n.view-profile {
+  background-color: #003161;
+}
+ 
+table tbody tr td button.n.view-profile:hover {
+  background-color: #01203f;
+}
+ 
+table tbody tr td button.n.make-available {
+  background-color: rgb(27, 211, 27);
+  color: rgb(255, 253, 253); /* Ensure text is visible on light green background */
+}
+ 
+table tbody tr td button.n.make-available:hover {
+  background-color: rgb(13, 125, 13);
+}
+ 
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+.modal.show {
+  display: flex;
+}
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+.close {
+  float: right;
+  cursor: pointer;
+}
+.message-popup {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.message-popup p {
+  margin: 0 0 10px 0;
+}
+.message-popup button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.profile-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ced4da;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 80%;
+  max-width: 500px;
+}
+ 
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+ 
+.profile-content p {
+  margin: 5px 0;
+}
+ 
+
+.close-btn {
+  color: #fff;
+  background-color: #ff0000;
+  border: none;
+  padding: 4px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+ 
+.close-btn:hover,
+.close-btn:focus {
+  background-color: #cc0000;
+}
+ 
+/* Popup container - hidden by default */
+.error-popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+ 
+/* Popup content */
+.error-popup-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+ 
+/* Close button */
+ 
+/* Confirmation Message */
+.confirmation {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #dff0d8;
+  color: #3c763d;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+ 
+/* Delete Confirmation Popup */
+.popup-content {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  text-align: center;
+  min-width: 300px;
+}
+ 
+/* Popup Buttons */
+.popup-content button {
+  margin: 10px 5px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+ 
+/* Confirm Delete Button */
+.delete-btn {
+  background-color: rgb(215, 12, 12);
+  color: white;
+}
+ 
+.delete-btn:hover {
+  background-color: rgb(103, 7, 7);
+}
+ 
+/* Cancel Button */
+.btn-cancel {
+  background-color: #003161;
+  color: #fff;
+}
+ 
+.btn-cancel:hover {
+  background-color: #01203f;
+}

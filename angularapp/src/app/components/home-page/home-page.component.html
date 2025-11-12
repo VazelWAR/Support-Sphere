@@ -1,0 +1,36 @@
+<ng-container *ngIf="userRole === 'Client'">
+    <app-clientnav></app-clientnav>
+</ng-container>
+
+<ng-container *ngIf="userRole === 'Manager'">
+    <app-managernav></app-managernav>
+</ng-container>
+
+<div class="hero-section">
+    <div class="overlay">
+        <div class="hero-content">
+            <div class="branding-box">
+                <h1>SupportSphere</h1>
+                <p>Your ultimate solution for managing client tickets and support processes</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="welcome-section">
+    <div class="welcome-card"> 
+        <h2>Welcome to SupportSphere</h2>
+        <p class="intro-text">
+            Streamline your client support needs with SupportSphere. We provide a comprehensive platform for managing support tickets, assigning agents, and ensuring timely issue resolution.
+        </p>
+    </div>
+</main>
+
+<div class="contact-section">
+    <div class="contact-box">
+        <h3>Contact Support</h3>
+        <p><strong>Phone:</strong> 987-654-3210</p>
+        <p><strong>Email:</strong> support@SupportSphere.com</p>
+        
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<ng-container *ngIf="userRole === 'Client'">
+  <app-clientnav></app-clientnav>
+</ng-container>
+
+<ng-container *ngIf="userRole === 'Manager'">
+  <app-managernav></app-managernav>
+</ng-container>
+
+<h2>Supported Agents</h2>
+<p *ngIf="message">{{ message }}</p>
+<div *ngFor="let agent of filteredAgents" class="agent-card">
+  <h3>{{ agent.name }}</h3>
+  <p>Email: {{ agent.email }}</p>
+  <p>Phone: {{ agent.phone }}</p>
+  <p>Expertise: {{ agent.expertise }}</p>
+  <p>Status: {{ agent.status }}</p>
+  <button (click)="showTickets(agent)">Tickets Worked</button>
+</div>
+<!-- Modal -->
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <button class="close-btn" (click)="closeModal()"> x </button>
+    <h3>Tickets Worked By Agent</h3>
+    <div *ngIf="selectedTickets.length === 0">
+      <p>No tickets found for this agent.</p>
+    </div>
+    <div *ngFor="let ticket of selectedTickets" class="ticket-card">
+      <p><strong>Issue Type:</strong> {{ ticket.issueCategory }}</p>
+      <p><strong>Description:</strong> {{ ticket.description }}</p>
+      <p><strong>Status:</strong> {{ ticket.status }}</p>
+      <p><strong>Resolution Date:</strong> {{ ticket.resolutionDate || 'Not Reviewed' }}</p>
+      <button [disbaled]="ticket.status!=='Open' || ticket.status!=='Resolved'"
+        (click)="navigateToFeedback(ticket.ticketId,selectedAgent?.agentId)">Write a Review</button>
+    </div>
+  </div>
+</div>

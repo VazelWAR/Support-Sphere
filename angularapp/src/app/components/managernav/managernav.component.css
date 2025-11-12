@@ -1,0 +1,146 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 10px;
+  background: linear-gradient(to right, #003161, #000B58);
+  color: #fff;
+  font-size: 14px;
+  height: auto;
+  z-index: 10000;
+}
+.popup-card {
+  padding: 10px 20px;
+  height: 100px;
+  background-color: #fff;
+  color: black;
+  border-radius: 12px;
+  margin-top: 10%;
+}
+ 
+.brand {
+  font-weight: bold;
+  font-size: 30px;
+  margin-left: 30px;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.nav-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.nav-links a,
+.nav-btn {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.manager-btn {
+  background-color: white;
+  color: black;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.logout-btn {
+  background-color: rgb(226, 12, 12);
+  color: white;
+  padding: 4px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+.logout-btn:hover {
+  background-color: rgb(161, 12, 12);
+}
+ 
+.dropdown {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 180px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 1000;
+  padding: 8px 0;
+}
+.dropdown-content a {
+  color: black !important;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: 500;
+  background-color: white;
+}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.logout-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 9999;
+}
+.popup-btn {
+  margin: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.popup-btn.confirm {
+  background-color: red;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+.popup-btn.confirm:hover {
+  background-color: rgb(115, 8, 8);
+}
+ 
+.popup-btn.cancel {
+  background-color: #6a1b9a;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+ 
+.popup-btn.cancel:hover {
+  background-color: #420965;
+}
+ 
+.nav-item {
+  border-radius: 4px;
+  padding: 6px 12px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+ 
+.nav-item:hover {
+  background-color: #df2c3b;
+}

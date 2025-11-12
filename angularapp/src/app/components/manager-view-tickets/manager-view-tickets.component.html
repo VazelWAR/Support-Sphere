@@ -1,0 +1,81 @@
+
+<ng-container *ngIf="userRole === 'Client'">
+  <app-clientnav></app-clientnav>
+</ng-container>
+
+<ng-container *ngIf="userRole === 'Manager'">
+  <app-managernav></app-managernav>
+</ng-container>
+
+<div class="container">
+    <h2>Available Tickets</h2>
+    <div class="filter-section">
+      <p>Filter By: </p>
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchTickets()" placeholder="Search by Title or Issue">
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>S.NO</th>
+          <th>TITLE</th>
+          <th>DESCRIPTION</th>
+          <th>ISSUE CATEGORY</th>
+          <th>CREATED DATE</th>
+          <th>TICKET STATUS</th>
+          <th>AGENT ASSIGNED</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="filteredTickets.length === 0">
+          <td colspan="8" style="text-align: center;">Oops! No records found</td>
+        </tr>
+        <tr *ngFor="let ticket of filteredTickets; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ ticket.title }}</td>
+          <td>{{ ticket.description }}</td>
+          <td>{{ ticket.issueCategory }}</td>
+          <td>{{ ticket.createdDate | date }}</td>
+          <td>{{ ticket.status }}</td>
+          <td>{{ ticket.supportAgent ? ticket.supportAgent.name : 'Not Assigned' }}</td>
+          <td>
+            <div class="btn-div">
+              <button *ngIf="!ticket.supportAgent" (click)="openModal(ticket)" class="assign-agent">Assign Agent</button>
+              <button [disabled]="!ticket.supportAgent || ticket.status !== 'Resolved'" (click)="closeTicket(ticket)" *ngIf="ticket.supportAgent" class="assign-agent">Close Ticket</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Agent Assignment Modal -->
+  <div class="modal" [class.show]="isModalOpen">
+    <div class="modal-content">
+      <button class="close" (click)="closeModal()" (keydown)="handleKeyDown($event)" aria-label="Close">&times;</button>
+      <h2>Assign Agent</h2>
+      <div class="agents-container">
+        <div class="agent-category">
+          <h3>Suggested Agents</h3>
+          <div *ngIf="suggestedAgents.length === 0">No suggested agents available for this issue.</div>
+          <div class="agent-card" *ngFor="let agent of suggestedAgents">
+            <button (click)="assignAgent(agent)">{{ agent.name }} ({{ agent.expertise }})</button>
+          </div>
+        </div>
+        <div class="agent-category">
+          <h3>
+            <a (click)="isManualVisible = !isManualVisible" style="cursor: pointer;">
+              {{ isManualVisible ? 'Hide Manual Select' : 'Manual Select' }}
+            </a>
+          </h3>
+          <div *ngIf="isManualVisible">
+            <input type="text" [(ngModel)]="agentSearchQuery" (input)="searchAgents()" placeholder="Search by Name or Expertise">
+            <div class="agent-card" *ngFor="let agent of filteredManualAgents">
+              <button (click)="assignAgent(agent)">{{ agent.name }} ({{ agent.expertise }})</button>`
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
